@@ -1,0 +1,183 @@
+@G
+$a=h
+$n=pd1
+$dim=2
+pi=2*asin(1)
+&Int=2^-1*(1|[1,0])*Int 
+&Ar=Int|[0.75,0]*-0.07*([1,-0.5,0.5,1]|[1,0.5,-0.5,1])*Int
+&Tri=Ar|([1,0]*rot(2*pi/3)|rot(pi/3))*Int
+
+
+@rot
+$a=h
+ka=0
+ret=[cos(ka),-sin(ka),sin(ka),cos(ka)]
+
+@sim
+$a=h             
+ka=0
+kb=0
+kc=1
+kd=1
+ret=[ka,kb]*[kc-ka,kb-kd,-kb+kd,kc-ka]
+
+@xk
+$a=h
+R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1]
+k=0
+q=1/3
+a=3*3.1415926535/180
+ret=if(R[k]-1,(1-q*cos(a))*q^(k+1)*cos((k+1)*a)-(-q*sin(a))*q^(k+1)*sin((k+1)*a),0)
+
+@yk
+$a=h
+R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1]
+k=0
+q=1/3
+a=3*3.1415926535/180
+ret=if(R[k]-1,(1-q*cos(a))*q^(k+1)*sin((k+1)*a)+(-q*sin(a))*q^(k+1)*cos((k+1)*a),0)
+
+@G1:G
+$n=dend [30] 12 21 12 21x2 12 21x3 12x6
+q=1/3
+alpha=$number($integer(-20,40))
+a=alpha*pi/180
+r=[1-q*cos(a),-q*sin(a)]
+R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1, 1,2, 1,2, 1,2, 1,2, 1,2, 1,2]
+x4= r[0]*0.5-r[1]*3^.5/2+
+	xk(R,0,q,a)+xk(R,1,q,a)+xk(R,2,q,a)+xk(R,3,q,a)+
+	xk(R,4,q,a)+xk(R,5,q,a)+xk(R,6,q,a)+xk(R,7,q,a)+
+	xk(R,8,q,a)+xk(R,9,q,a)+xk(R,10,q,a)+xk(R,11,q,a)+
+	xk(R,12,q,a)+xk(R,13,q,a)+xk(R,14,q,a)+xk(R,15,q,a)+
+	xk(R,16,q,a)+xk(R,17,q,a)+xk(R,18,q,a)+xk(R,19,q,a)+
+	xk(R,20,q,a)+xk(R,21,q,a)+xk(R,22,q,a)+xk(R,23,q,a)+
+	xk(R,24,q,a)+xk(R,25,q,a)+xk(R,26,q,a)+xk(R,27,q,a)+
+	xk(R,28,q,a)+xk(R,29,q,a)
+y4= r[0]*3^.5/2+r[1]*0.5+
+	yk(R,0,q,a)+yk(R,1,q,a)+yk(R,2,q,a)+yk(R,3,q,a)+
+	yk(R,4,q,a)+yk(R,5,q,a)+yk(R,6,q,a)+yk(R,7,q,a)+
+	yk(R,8,q,a)+yk(R,9,q,a)+yk(R,10,q,a)+yk(R,11,q,a)+
+	yk(R,12,q,a)+yk(R,13,q,a)+yk(R,14,q,a)+yk(R,15,q,a)+
+	yk(R,16,q,a)+yk(R,17,q,a)+yk(R,18,q,a)+yk(R,19,q,a)+
+	yk(R,20,q,a)+yk(R,21,q,a)+yk(R,22,q,a)+yk(R,23,q,a)+
+	yk(R,24,q,a)+yk(R,25,q,a)+yk(R,26,q,a)+yk(R,27,q,a)+
+	yk(R,28,q,a)+yk(R,29,q,a)
+s4=sim(x4,y4,0.5,3^.5/6)*3^.5*rot(-pi/6)
+S=rot(a)*q|[1,0]*rot(2*pi/3+a)*q|[0.5,3^0.5/2]*rot(4*pi/3+a)*q|s4
+P1=Tri|S*Tri
+K=S*K
+
+@G2:G
+$n=pol1 [30] 12 21 12 21x2 12 21x3 12x6
+q=0.4
+alpha=$number($real(1,15))
+a=alpha*pi/180
+r=[1-q*cos(a),-q*sin(a)]
+R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1, 1,2, 1,2, 1,2, 1,2, 1,2, 1,2]
+x4= r[0]*0.5-r[1]*3^.5/2+
+	xk(R,0,q,a)+xk(R,1,q,a)+xk(R,2,q,a)+xk(R,3,q,a)+
+	xk(R,4,q,a)+xk(R,5,q,a)+xk(R,6,q,a)+xk(R,7,q,a)+
+	xk(R,8,q,a)+xk(R,9,q,a)+xk(R,10,q,a)+xk(R,11,q,a)+
+	xk(R,12,q,a)+xk(R,13,q,a)+xk(R,14,q,a)+xk(R,15,q,a)+
+	xk(R,16,q,a)+xk(R,17,q,a)+xk(R,18,q,a)+xk(R,19,q,a)+
+	xk(R,20,q,a)+xk(R,21,q,a)+xk(R,22,q,a)+xk(R,23,q,a)+
+	xk(R,24,q,a)+xk(R,25,q,a)+xk(R,26,q,a)+xk(R,27,q,a)+
+	xk(R,28,q,a)+xk(R,29,q,a)
+y4= r[0]*3^.5/2+r[1]*0.5+
+	yk(R,0,q,a)+yk(R,1,q,a)+yk(R,2,q,a)+yk(R,3,q,a)+
+	yk(R,4,q,a)+yk(R,5,q,a)+yk(R,6,q,a)+yk(R,7,q,a)+
+	yk(R,8,q,a)+yk(R,9,q,a)+yk(R,10,q,a)+yk(R,11,q,a)+
+	yk(R,12,q,a)+yk(R,13,q,a)+yk(R,14,q,a)+yk(R,15,q,a)+
+	yk(R,16,q,a)+yk(R,17,q,a)+yk(R,18,q,a)+yk(R,19,q,a)+
+	yk(R,20,q,a)+yk(R,21,q,a)+yk(R,22,q,a)+yk(R,23,q,a)+
+	yk(R,24,q,a)+yk(R,25,q,a)+yk(R,26,q,a)+yk(R,27,q,a)+
+	yk(R,28,q,a)+yk(R,29,q,a)
+s4=sim(x4,y4,0.5,3^.5/6)*3^.5*rot(-pi/6)
+s5=sim(q*cos(a),q*sin(a),1-q*cos(a),-q*sin(a))*(rot(-pi/9)|[0.5,-tan(pi/9)/2]*rot(pi/9))/(2*cos(pi/9))
+s6=[1,0]*rot(2*pi/3)*s5
+s7=[1,0]*rot(2*pi/3)*s6
+S=rot(a)*q|[1,0]*rot(2*pi/3+a)*q|[0.5,3^0.5/2]*rot(4*pi/3+a)*q|s4|s5|s6|s7
+P1=Tri|S*Tri
+K=S*K
+
+@G3:G
+$n=pol2 [30] 12 21 12 21x2 12 21x3 12x6
+q=0.37
+alpha=$number($real(1,15))
+a=alpha*pi/180
+r=[1-q*cos(a),-q*sin(a)]
+R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1, 1,2, 1,2, 1,2, 1,2, 1,2, 1,2]
+x4= r[0]*0.5-r[1]*3^.5/2+
+	xk(R,0,q,a)+xk(R,1,q,a)+xk(R,2,q,a)+xk(R,3,q,a)+
+	xk(R,4,q,a)+xk(R,5,q,a)+xk(R,6,q,a)+xk(R,7,q,a)+
+	xk(R,8,q,a)+xk(R,9,q,a)+xk(R,10,q,a)+xk(R,11,q,a)+
+	xk(R,12,q,a)+xk(R,13,q,a)+xk(R,14,q,a)+xk(R,15,q,a)+
+	xk(R,16,q,a)+xk(R,17,q,a)+xk(R,18,q,a)+xk(R,19,q,a)+
+	xk(R,20,q,a)+xk(R,21,q,a)+xk(R,22,q,a)+xk(R,23,q,a)+
+	xk(R,24,q,a)+xk(R,25,q,a)+xk(R,26,q,a)+xk(R,27,q,a)+
+	xk(R,28,q,a)+xk(R,29,q,a)
+y4= r[0]*3^.5/2+r[1]*0.5+
+	yk(R,0,q,a)+yk(R,1,q,a)+yk(R,2,q,a)+yk(R,3,q,a)+
+	yk(R,4,q,a)+yk(R,5,q,a)+yk(R,6,q,a)+yk(R,7,q,a)+
+	yk(R,8,q,a)+yk(R,9,q,a)+yk(R,10,q,a)+yk(R,11,q,a)+
+	yk(R,12,q,a)+yk(R,13,q,a)+yk(R,14,q,a)+yk(R,15,q,a)+
+	yk(R,16,q,a)+yk(R,17,q,a)+yk(R,18,q,a)+yk(R,19,q,a)+
+	yk(R,20,q,a)+yk(R,21,q,a)+yk(R,22,q,a)+yk(R,23,q,a)+
+	yk(R,24,q,a)+yk(R,25,q,a)+yk(R,26,q,a)+yk(R,27,q,a)+
+	yk(R,28,q,a)+yk(R,29,q,a)
+s4=sim(x4,y4,0.5,3^.5/6)*3^.5*rot(-pi/6)
+s5=sim(q*cos(a),q*sin(a),1-q*cos(a),-q*sin(a))*(1|[1/3,0]|[2/3,0])/3
+s6=[1,0]*rot(2*pi/3)*s5
+s7=[1,0]*rot(2*pi/3)*s6
+S=rot(a)*q|[1,0]*rot(2*pi/3+a)*q|[0.5,3^0.5/2]*rot(4*pi/3+a)*q|s4|s5|s6|s7
+P1=Tri|S*Tri
+K=S*K
+
+@G4:G
+$n=pol3 [30] 12 21 12 21x2 12 21x3 12x6
+t=[1,0]*rot(2*pi/3)
+q=0.4
+alpha=$number($real(1,15))
+a=alpha*pi/180
+r=[1-q*cos(a),-q*sin(a)]
+#R=[1,2, 2,1, 1,2, 2,1, 2,1, 1,2, 2,1, 2,1, 2,1, 1,2, 1,2, 1,2, 1,2, 1,2, 1,2]
+R=[1,2, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1]
+x4= r[0]*0.5-r[1]*3^.5/2+
+	xk(R,0,q,a)+xk(R,1,q,a)+xk(R,2,q,a)+xk(R,3,q,a)+
+	xk(R,4,q,a)+xk(R,5,q,a)+xk(R,6,q,a)+xk(R,7,q,a)+
+	xk(R,8,q,a)+xk(R,9,q,a)+xk(R,10,q,a)+xk(R,11,q,a)+
+	xk(R,12,q,a)+xk(R,13,q,a)+xk(R,14,q,a)+xk(R,15,q,a)+
+	xk(R,16,q,a)+xk(R,17,q,a)+xk(R,18,q,a)+xk(R,19,q,a)+
+	xk(R,20,q,a)+xk(R,21,q,a)+xk(R,22,q,a)+xk(R,23,q,a)+
+	xk(R,24,q,a)+xk(R,25,q,a)+xk(R,26,q,a)+xk(R,27,q,a)+
+	xk(R,28,q,a)+xk(R,29,q,a)
+y4= r[0]*3^.5/2+r[1]*0.5+
+	yk(R,0,q,a)+yk(R,1,q,a)+yk(R,2,q,a)+yk(R,3,q,a)+
+	yk(R,4,q,a)+yk(R,5,q,a)+yk(R,6,q,a)+yk(R,7,q,a)+
+	yk(R,8,q,a)+yk(R,9,q,a)+yk(R,10,q,a)+yk(R,11,q,a)+
+	yk(R,12,q,a)+yk(R,13,q,a)+yk(R,14,q,a)+yk(R,15,q,a)+
+	yk(R,16,q,a)+yk(R,17,q,a)+yk(R,18,q,a)+yk(R,19,q,a)+
+	yk(R,20,q,a)+yk(R,21,q,a)+yk(R,22,q,a)+yk(R,23,q,a)+
+	yk(R,24,q,a)+yk(R,25,q,a)+yk(R,26,q,a)+yk(R,27,q,a)+
+	yk(R,28,q,a)+yk(R,29,q,a)
+s1=rot(a)*q
+s2=[1,0]*rot(2*pi/3+a)*q*t^2
+s3=[0.5,3^0.5/2]*rot(4*pi/3+a)*q*t
+s4=t*sim(x4,y4,0.5,3^.5/6)*3^.5*rot(-pi/6)
+#s5=sim(q*cos(a),q*sin(a),1-q*cos(a),-q*sin(a))*(1|[1/3,0]|[2/3,0])/3
+s5=sim(q*cos(a),q*sin(a),1-q*cos(a),-q*sin(a))*(
+	rot(-3.5*pi/18)|[cos(3.5*pi/18)/(1+2*cos(3.5*pi/18)),-sin(3.5*pi/18)/(1+2*cos(3.5*pi/18))]|[1-cos(3.5*pi/18)/(1+2*cos(3.5*pi/18)),-sin(3.5*pi/18)/(1+2*cos(3.5*pi/18))]*rot(3.5*pi/18))/(1+2*cos(3.5*pi/18))
+s6=[1,0]*rot(2*pi/3)*s5
+s7=[1,0]*rot(2*pi/3)*s6
+S=s1|s2|s3|s4|s5|s6|s7
+P1=Tri|S*Tri
+P2=Tri|S*Tri|s1*(s1|s2|s3|s4)*Tri
+P3=Tri|S*Tri|s1*(s1|s2|s3|s4)*Tri|s1*s2*(s1|s2|s3|s4)*Tri
+P4=Tri|S*Tri|s1*(s1|s2|s3|s4)*Tri|s1*s2*(s1|s2|s3|s4)*Tri|s1*s2*s3*(s1|s2|s3|s4)*Tri
+K=S*K
+
+g1=s1*g1|s1*s4*g2|s1*s2*s3*s1*g3|s1*s2*s3*g1|s1*s2*s3*g2|s4*g1
+g2=t*g1
+g3=t*g2
+G=g1|g2|g3
+Z=P4|G
