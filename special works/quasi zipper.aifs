@@ -1,0 +1,39 @@
+@sim  # 
+$a=h  # блок скрыт
+kx1=0
+ky1=0
+kx2=1
+ky2=1
+ret=[kx1,ky1]*[(kx2-kx1),(ky1-ky2),(ky2-ky1),(kx2-kx1)]
+
+@rot  # команда "поворот"
+$a=h  # блок скрыт
+ka=0
+ret=[cos(ka),-sin(ka),sin(ka),cos(ka)]
+
+@sqrt  # команда "корень квадратный"
+$a=h  # блок скрыт
+ka=1
+ret=ka^(0.5)
+
+@G0
+$a=c
+$n=nnn  # имя блока
+$dim=2  # размерность
+pi=2*asin(1)
+&A=(0.5|[0.5,0]*0.5)*A  # единичный отрезок
+&Ar=(1|[0.8,0]*rot(2*pi/3)*0.05)*A  # стрелка
+p=1/6
+t=1/sqrt(3)
+q=3/8
+#s1=[p,-p*t,p*t,p]
+#s2=[p+q,p*t-q*t]*[-q,-q*t,q*t,-q]
+#s3=[1-p,p*t]*[-q,q*t,-q*t,-q]
+#s4=[1-p,p*t]*[p,p*t,-p*t,p]
+s1=sim(0,0,p,p*t) #z0->z1
+s2=sim(p+q,p*t-q*t,p,p*t) #z3->z1
+s3=sim(1-p,p*t,1-p-q,p*t-q*t) #z4->z2
+s4=sim(1-p,p*t,1,0) #z4->z5
+S=s1|s2|s3|s4
+P1=S*A
+K=S*K

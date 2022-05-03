@@ -1,0 +1,227 @@
+@sim
+$a=h
+kx1=0
+ky1=0
+kx2=1
+ky2=1
+ret=[kx1,ky1]*[(kx2-kx1),(ky1-ky2),(ky2-ky1),(kx2-kx1)]
+
+@rot
+$a=h
+ka=0
+ret=[cos(ka),-sin(ka),sin(ka),cos(ka)]
+
+@rotz
+$a=h
+ka=0
+ret=[cos(ka),-sin(ka),0,sin(ka),cos(ka),0,0,0,1]
+
+@sqrt
+$a=h
+ka=1
+ret=ka^(0.5)
+
+@sd
+$a=h
+g=[1,0,0,1]
+a=[0,0]
+ret=[a[0]*g[0]+a[1]*g[1],a[0]*g[2]+a[1]*g[3]]
+
+@G0
+$a=h
+$n=zagotovka
+$dim=2  # размерность
+pi=2*asin(1)
+&A=(0.5|[0.5,0]*0.5)*A  # единичный отрезок
+&Ar=(1|[0.8,0]*rot(2*pi/3)*0.05)*A  # стрелка
+&P0=(1|rot(pi/2)|[1,0]*rot(pi/2)|[0,1])*A
+g=[1,0,0,1]
+Y=1
+gL=Y*g*P0|P0
+P1=g^-1*Y*P0|P0
+&P1Or=Y*g^-1*P0|P0
+K=g^-1*Y*K
+&KOr=Y*g^-1*KOr
+
+@G1:G0
+$a=h
+$n=(2)x[1,-1,1,1] SS 2-dragon
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+g=[1,-1,1,1]
+Y=([0,0]*sd(g,a1)|[1,0]*sd(g,a2))
+
+@:G1
+$n=(2)x[1,-1,1,1] SS 2-dragon
+a1=[0,0]
+a2=[0,0]
+
+@G2:G0
+$a=h
+$n=(2)x[1,1,0,2] Af
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+g=[1,1,0,2]
+Y=([0,0]*sd(g,a1)|[1,1]*sd(g,a2))
+
+@:G2
+$n=(2)x[1,1,0,2] Af
+a1=[0,0]
+a2=[0,0]
+
+@G3:G0
+$a=h
+$n=(5)x[2,-1,1,2] SS
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+a5=$vector(2,$integer(-3,3))
+g=[2,-1,1,2]
+Y=([0,0]*sd(g,a1)|[1,1]*sd(g,a2)|[0,1]*sd(g,a3)|[0,2]*sd(g,a4)|[1,2]*sd(g,a5))
+
+@:G3
+$n=(5)x[2,-1,1,2] SS
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+a5=[0,0]
+
+@G4:G0
+$a=h
+$n=(8)x[2,-2,2,2] SS
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+a5=$vector(2,$integer(-3,3))
+a6=$vector(2,$integer(-3,3))
+a7=$vector(2,$integer(-3,3))
+a8=$vector(2,$integer(-3,3))
+g=[2,-2,2,2]
+Y=([0,0]*sd(g,a1)|[-1,1]*sd(g,a2)|[0,1]*sd(g,a3)|[1,1]*sd(g,a4)|[-1,2]*sd(g,a5)|[0,2]*sd(g,a6)|[1,2]*sd(g,a7)|[0,3]*sd(g,a8))
+
+@:G4
+$n=(8)x[2,-2,2,2] SS
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+a5=[0,0]
+a6=[0,0]
+a7=[0,0]
+a8=[0,0]
+
+@G5:G0
+$a=h
+$n=(3)x[2,-1,1,1] Af
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+g=[2,-1,1,1]
+Y=([0,0]*sd(g,a1)|[0,1]*sd(g,a2)|[1,1]*sd(g,a3))
+
+@:G5
+$n=(3)x[2,-1,1,1] Af
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+
+@G6:G0
+$a=h
+$n=(4)x[2,-1,0,2] Af
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+g=[2,-1,0,2]
+Y=([0,0]*sd(g,a1)|[0,1]*sd(g,a2)|[1,1]*sd(g,a3)|[1,0]*sd(g,a4))
+
+@:G6
+$n=(4)x[2,-1,0,2] Af
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+
+@G7:G0
+$a=h
+$n=(4)x[-1,2,1,2] Af
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+g=[-1,2,1,2]
+Y=([0,0]*sd(g,a1)|[0,1]*sd(g,a2)|[1,1]*sd(g,a3)|[1,2]*sd(g,a4))
+
+@:G7
+$n=(4)x[-1,2,1,2] Af
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+
+@G8:G0
+$a=h
+$n=(4)x[1,-1,2,2] Af
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+g=[1,-1,2,2]
+Y=([0,0]*sd(g,a1)|[0,1]*sd(g,a2)|[0,2]*sd(g,a3)|[0,3]*sd(g,a4))
+
+@:G8
+$n=(4)x[1,-1,2,2] Af
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+
+@G9:G0
+$a=h
+$n=(4)x[2,0,0,2] SS
+a1=$vector(2,$integer(-3,3))
+a2=$vector(2,$integer(-3,3))
+a3=$vector(2,$integer(-3,3))
+a4=$vector(2,$integer(-3,3))
+g=[2,0,0,2]
+Y=([0,0]*sd(g,a1)|[1,0]*sd(g,a2)|[0,1]*sd(g,a3)|[1,1]*sd(g,a4))
+
+@:G9
+$n=(4)x[2,0,0,2] SS
+a1=[0,0]
+a2=[0,0]
+a3=[0,0]
+a4=[0,0]
+
+@:G9
+#$n=(4)x[2,0,0,2] SS
+#$camera=[5.003953052291608,0.5065050774267066,0.05843805967620596]
+$root=K
+a1=[1,0];a2=[3,0];a3=[2,1];a4=[1,0]
+
+@:G9
+#$n=(4)x[2,0,0,2] SS
+$root=K
+a1=[2,0];a2=[0,0];a3=[0,0];a4=[0,0]
+
+@G10
+$n=3dragon
+$dim=3
+pi=2*asin(1)
+&A=(0.5|[0.5,0,0]*0.5)*A  # единичный отрезок
+&Ar=(1|[0.8,0,0]*rotz(2*pi/3)*0.05)*A  # стрелка
+s1=[0.5,sqrt(3)/6,0]*rotz(7*pi/6)*1/sqrt(3)
+s2=[1,0,0]*rotz(5*pi/6)*1/sqrt(3)
+s3=[1/6,-sqrt(3)/6,0]*rotz(pi/6)/sqrt(3)
+A1=(1|s1|s2)*Ar
+K=(s1|s2)*K
+K2=(s1|s2|s3)*K2
+SSS7=s1*K2|s2*K2|s3*K2|[0,0,0.01]*s1*K|[0,0,0.01]*s2*K
+
+
+
+
+
