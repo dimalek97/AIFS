@@ -4,7 +4,7 @@
 ## Структура
 
 * каталог `collections`: подборки семейств фракталов
-	* `afinne fractals.aifs`: небольшая подборка самоаффинных множеств
+	* [`afinne fractals.aifs`](collections/afinne fractals.aifs): небольшая подборка самоаффинных множеств
 	* `chain poligaskets intersecting by subcopies.aifs`: симметричные кольцевые полигаскеты с перекрытиями по подкопиям
 	* `fractal squares dendrites.aifs`: примеры для классификации фрактальных квадратов, являющихся дендритами, по форме их главного дерева
 	* `redocking of chain poligaskets.aifs`: симметричные кольцевые полигаскеты с нестандартными стыковками по вершинам
