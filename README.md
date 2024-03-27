@@ -1,17 +1,15 @@
 # AIFS-repository
 
 
-## Структура исходников
+## Структура
 
-```
-.
-├── collections
-├── finders
-├── frozen works
-├── special works
-└── works in progress
-```
+
+* каталог ['collections'](collections/):
+* каталог ['finders'](finders/):
+* каталог ['frozen works'](frozen works/):
+* каталог ['special works'](special works/):
+* файл `.gitignore`: собран сервисом [gitignore.io](https://www.toptal.com/developers/gitignore/)
 
 В корневом каталоге находятся файлы:
 
-* файл `.gitignore` собран сервисом [gitignore.io](https://www.toptal.com/developers/gitignore/)
+
