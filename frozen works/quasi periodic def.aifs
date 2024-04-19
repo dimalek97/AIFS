@@ -1,13 +1,3 @@
-@G
-$a=h
-$n=pd1
-$dim=2
-pi=2*asin(1)
-&Int=2^-1*(1|[1,0])*Int 
-&Ar=Int|[0.75,0]*-0.07*([1,-0.5,0.5,1]|[1,0.5,-0.5,1])*Int
-&Tri=Ar|([1,0]*rot(2*pi/3)|rot(pi/3))*Int
-
-
 @rot
 $a=h
 ka=0
@@ -15,10 +5,7 @@ ret=[cos(ka),-sin(ka),sin(ka),cos(ka)]
 
 @sim
 $a=h             
-ka=0
-kb=0
-kc=1
-kd=1
+ka=0; kb=0; kc=1; kd=1
 ret=[ka,kb]*[kc-ka,kb-kd,-kb+kd,kc-ka]
 
 @xk
@@ -36,6 +23,18 @@ k=0
 q=1/3
 a=3*3.1415926535/180
 ret=if(R[k]-1,(1-q*cos(a))*q^(k+1)*sin((k+1)*a)+(-q*sin(a))*q^(k+1)*cos((k+1)*a),0)
+
+@G
+$a=h
+$n=pd1
+$dim=2
+pi=2*asin(1)
+&Int=2^-1*(1|[1,0])*Int 
+&Ar=Int|[0.75,0]*-0.07*([1,-0.5,0.5,1]|[1,0.5,-0.5,1])*Int
+&Tri=Ar|([1,0]*rot(2*pi/3)|rot(pi/3))*Int
+
+
+
 
 @G1:G
 $n=dend [30] 12 21 12 21x2 12 21x3 12x6
