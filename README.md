@@ -1,4 +1,4 @@
-# AIFS-repository
+# AIFS
 
 
 ## Структура
@@ -16,6 +16,10 @@
 	* `witset.aifs`: графики функций Уитни для множеств Уитни из препринта [_Qi-han Yuan & Yuan Zhang, Constructing Whitney sets via IFS with condensation (2021)_](https://doi.org/10.48550/arXiv.2110.11675);
 	построены анимации [1](https://youtu.be/pb1t1th666Y), [2](https://youtu.be/hTi6mIyWzyI) и [3](https://youtu.be/GfSDUBSR39M)
 * каталог `finders`: файлы для поиска семейств фракталов
+	* `find 1 fr square [o2].aifs`
+	* `find 1 fr treangle [o2].aifs`
+	* `find fractal cubes 3x3x3 SIP 7-copy CLEAR.aifs`: результат поиска фрактальных кубов порядка 3 с одноточечным пересечением и с 7 копиями. Препринт [_A.Tetenov, M.Chanchieva, D.Drozdov, D.Rahmanov, V.Safonova, I.Udin, A. Vetrova. On Bi-Lipschitz classification of fractal cubes possessing one-point intersection property (2022)_](https://doi.org/10.48550/arXiv.2207.13023)
+	* `find fractal cubes 3x3x3 SIP 8-copy TEMPLATE.aifs`: шаблон для поиска фрактальных кубов порядка 3 с одноточечным пересечением и с 8 копиями
 * каталог `frozen works`: замороженные проекты
 * каталог `special works`: отдельные примеры
 * файл `.gitignore`: собран сервисом [gitignore.io](https://www.toptal.com/developers/gitignore/)
